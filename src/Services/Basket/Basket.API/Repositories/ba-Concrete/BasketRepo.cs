@@ -35,6 +35,7 @@ namespace Basket.API.Repositories.ba_Concrete
 
         public async Task<ShoppingCart> UpdateBasket(ShoppingCart basket)
         {
+            //It is a key-value pair implementation(UserName is the Key while object basket is the value
             await _redisCache.SetStringAsync(basket.UserName, JsonConvert.SerializeObject(basket));
             return await GetBasket(basket.UserName);
         }
